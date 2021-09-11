@@ -25,6 +25,27 @@ class Controller {
 			}
 		});
 	}
+
+	static addPolitician(params) {
+		if (params.length !== 4) {
+			View.wrongParam();
+		} else {
+			let [name, party, location, grade_current] = params;
+			Models.addPolitician(
+				name,
+				party,
+				location,
+				grade_current,
+				(err, newPolitician) => {
+					if (err) {
+						View.errMessage(err);
+					} else {
+						View.displayData(newPolitician);
+					}
+				}
+			);
+		}
+	}
 }
 
 module.exports = Controller;

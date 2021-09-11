@@ -12,6 +12,10 @@ switch (command) {
 		Controller.showVoteForAdam();
 		break;
 
+	case 'add':
+		Controller.addPolitician(params);
+		break;
+
 	default:
 		Controller.commandList();
 		break;

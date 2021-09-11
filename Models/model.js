@@ -63,6 +63,31 @@ class Models {
 			}
 		});
 	}
+
+	static addPolitician(name, party, location, grade_current, cb) {
+		let query = `
+    INSERT INTO "Politicians" ("name", "party", "location", "grade_current")
+    VALUES ('${name}', '${party}', '${location}', ${grade_current} )
+    RETURNING *
+    `;
+
+		pool.query(query, (err, res) => {
+			if (err) {
+				cb(err);
+			} else {
+				let result = res.rows.map((el) => {
+					return new Politician(
+						el.name,
+						el.party,
+						el.location,
+						el.grade_current
+					);
+				});
+
+				cb(null, result);
+			}
+		});
+	}
 }
 
 module.exports = Models;

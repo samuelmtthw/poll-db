@@ -1,7 +1,10 @@
 class View {
 	static commandList() {
 		console.log('node index.js query-1');
-		console.log('node index.js');
+		console.log('node index.js query-2');
+		console.log(
+			'node index.js add <politician_name> <politician_party> <location> <grade_current>'
+		);
 	}
 
 	static errMessage(err) {
@@ -10,6 +13,11 @@ class View {
 
 	static displayData(data) {
 		console.table(data);
+	}
+
+	static wrongParam() {
+		console.log('Please input the correct parameter');
+		View.commandList;
 	}
 }
 
