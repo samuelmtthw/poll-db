@@ -7,11 +7,21 @@ class Controller {
 	}
 
 	static showPoliticianPartyR() {
-		Models.showPoliticianPartyR((err, res) => {
+		Models.showPoliticianPartyR((err, politicians) => {
 			if (err) {
 				View.errMessage(err);
 			} else {
-				View.displayData(res);
+				View.displayData(politicians);
+			}
+		});
+	}
+
+	static showVoteForAdam() {
+		Models.showVoteForAdam((err, votes) => {
+			if (err) {
+				View.errMessage(err);
+			} else {
+				View.displayData(votes);
 			}
 		});
 	}

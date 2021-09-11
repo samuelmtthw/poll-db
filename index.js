@@ -8,6 +8,10 @@ switch (command) {
 		Controller.showPoliticianPartyR();
 		break;
 
+	case 'query-2':
+		Controller.showVoteForAdam();
+		break;
+
 	default:
 		Controller.commandList();
 		break;

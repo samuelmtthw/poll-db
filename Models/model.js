@@ -1,5 +1,5 @@
 const pool = require('../config/connection');
-const { Politician, Voter, Vote } = require('./class');
+const { Politician, Voter, PoliticianVote } = require('./class');
 
 class Models {
 	static showPoliticianPartyR(cb) {
@@ -29,6 +29,37 @@ class Models {
 				});
 
 				cb(null, politicians);
+			}
+		});
+	}
+
+	static showVoteForAdam(cb) {
+		let query = `
+    SELECT p."name", COUNT(*) as "totalVote"
+    FROM "Politicians" p
+    JOIN "Votes" v ON v."PoliticianId" = p."id"
+    WHERE p."name" LIKE '%Adam%'
+    GROUP BY p."name"
+    
+    `;
+
+		pool.query(query, (err, res) => {
+			if (err) {
+				cb(err);
+			} else {
+				let result = res.rows.map((el) => {
+					let output = new PoliticianVote(
+						el.name,
+						null,
+						null,
+						el.totalVote
+					);
+					delete output.VoterId;
+					delete output.PoliticianId;
+					return output;
+				});
+
+				cb(null, result);
 			}
 		});
 	}

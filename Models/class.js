@@ -16,11 +16,13 @@ class Voter {
 	}
 }
 
-class Vote {
-	constructor(VoterId, PoliticianId) {
+class PoliticianVote {
+	constructor(name, VoterId, PoliticianId, totalVote) {
+		this.name = name;
 		this.VoterId = Number(VoterId);
 		this.PoliticianId = Number(PoliticianId);
+		this.totalVote = Number(totalVote);
 	}
 }
 
-module.exports = { Politician, Voter, Vote };
+module.exports = { Politician, Voter, PoliticianVote };
