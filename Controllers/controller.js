@@ -40,10 +40,25 @@ class Controller {
 					if (err) {
 						View.errMessage(err);
 					} else {
-						View.displayData(newPolitician);
+						View.successAddPolitician(newPolitician);
 					}
 				}
 			);
+		}
+	}
+
+	static deletePoliticianByParty(params) {
+		if (params.length !== 1) {
+			View.wrongParam();
+		} else {
+			let party = params[0];
+			Models.deletePoliticianByParty(party, (err, result) => {
+				if (err) {
+					View.errMessage(err);
+				} else {
+					View.successDeletePoliticianByParty(result);
+				}
+			});
 		}
 	}
 }

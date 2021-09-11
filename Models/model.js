@@ -88,6 +88,21 @@ class Models {
 			}
 		});
 	}
+
+	static deletePoliticianByParty(party, cb) {
+		let query = `
+      DELETE FROM "Politicians"
+      WHERE "party" = '${party}';
+    `;
+
+		pool.query(query, (err, res) => {
+			if (err) {
+				cb(err, null);
+			} else {
+				cb(null, res.rowCount);
+			}
+		});
+	}
 }
 
 module.exports = Models;

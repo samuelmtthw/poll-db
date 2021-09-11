@@ -19,6 +19,15 @@ class View {
 		console.log('Please input the correct parameter');
 		View.commandList;
 	}
+
+	static successAddPolitician(data) {
+		console.log('Success add new politician');
+		View.displayData(data);
+	}
+
+	static successDeletePoliticianByParty(data) {
+		console.log(`Success delete politician, total : ${data}`);
+	}
 }
 
 module.exports = View;

@@ -16,6 +16,10 @@ switch (command) {
 		Controller.addPolitician(params);
 		break;
 
+	case 'deleteParty':
+		Controller.deletePoliticianByParty(params);
+		break;
+
 	default:
 		Controller.commandList();
 		break;
